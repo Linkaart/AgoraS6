@@ -13,4 +13,4 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 1. Clonez le projet depuis GitHub :
    ```bash
-   git clone https://github.com/votre-utilisateur/AgoraBo.git
+   git clone https://github.com/Linkaart/AgoraBo.git
