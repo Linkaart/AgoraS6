@@ -7,7 +7,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 - **PHP** (version 8.1 ou supérieure)
 - **Composer** (pour la gestion des dépendances PHP)
-- **Symfony CLI** (optionnel mais recommandé pour une gestion facile du projet Symfony)
+- **Symfony CLI** ( pour une gestion facile du projet )
 
 ## Installation
 
