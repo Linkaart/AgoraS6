@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="sio">
+		<meta name="keyword" content="MJC, Agora">
+		<title>AgorA - Administration</title>
+		{% block stylesheets %}
+			<!-- Bootstrap core CSS -->
+			<link
+			href="{{ asset('assets/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
+			<!--external css-->
+			<link href="{{ asset('assets/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet"/>
+			<link href="{{ asset('assets/lib/fullcalendar/bootstrap-fullcalendar.css') }}" rel="stylesheet"/>
+			<link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/bootstrap fileupload/bootstrap-fileupload.css') }}"/>
+			<link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/bootstrap datepicker/css/datepicker.css') }}"/>
+			<link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/bootstrap datepicker/css/datepicker.css')}}"/>
+			<link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/bootstrap timepicker/compiled/timepicker.css') }}"/>
+			<link rel="stylesheet" type="text/css" href="{{ asset('assets/lib/bootstrap datetimepicker/css/datetimepicker.css') }}"/>
+		{% endblock %}
+		<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/style-responsive.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/styleAgora.css') }}" rel="stylesheet">
+	</head>
+	<body>
+		<section id="container">
+			<!-- ********************************************************************************************************************************************************** 
+												                TOP BAR CONTENT & NOTIFICATIONS 
+												        *********************************************************************************************************************************************************** -->
+			<!--header start-->
+				<header class="header black-bg"> <div class="sidebar-toggle-box">
+					<div class="fa fa-bars tooltips" data-placement="right" data-original title="Toggle Navigation"></div>
+				</div>
+				<!--logo start-->
+				<a href="index.php" class="logo">
+					<b>Ago<span>rA</span>
+					</b>
+				</a>
+				<!--logo end-->
+				<ul class="nav pull-right top-menu">
+					{% if (app.session.has('idUtilisateur')) %}
+						<a href="" class="userAgo">
+							{{ app.session.get('prenomUtilisateur') }}
+							{{ app.session.get('nomUtilisateur') }}</a>
+						<li>
+							<a class="logout" href="{{ path('deconnexion') }}">Se déconnecter</a>
+						</li>
+					{% else %}
+						<li>
+							<a class="logout" href="{{ path('accueil') }}">Se connecter</a>
+						</li>
+					{% endif %}
+				</ul>
+			</header>
+			<!--header end-->
+
+			<!-- ********************************************************************************************************************************************************** 
+												                MAIN SIDEBAR MENU 
+												        *********************************************************************************************************************************************************** -->
+
+			{% block menu %}
+				<li>
+					<a href="{{path('pegis_afficher')}}">Pegi</a>
+				</li>
+				{% if app.user %}
+					<li>
+						{{ include('menu.html.twig') }}
+
+					</li>
+				{% endif %}
+
+			{% endblock %}
+
+
+			<!-- ********************************************************************************************************************************************************** 
+												                MAIN CONTENT 
+			*********************************************************************************************************************************************************** -->
+			<section id="main-content">
+				<section class="wrapper">
+					<div class="container-fluid"> {% block central %}{% endblock %}{% block body %}{% endblock %}
+						</div>
+					</section>
+				</section>
+				<!-- /MAIN CONTENT -->
+				<!--main content end-->
+
+				<!--footer start-->
+					<footer class="site-footer"> <div class="text-center">
+						<p>Crée par Logma avec le template bootstrap Dashio : &copy; Copyrights
+							<strong>Dashio</strong>. All Rights Reserved</p>
+						<div class="credits">
+							Created with Dashio template by
+							<a href="https://templatemag.com/">TemplateMag</a>
+						</div>
+						<a href="index.html#" class="go-top">
+							<i class="fa fa-angle-up"></i>
+						</a>
+					</div>
+				</footer>
+				<!--footer end-->
+			</section>
+
+			<!-- js placed at the end of the document so the pages load faster -->
+			<script src="{{ asset('assets/lib/jquery/jquery.min.js') }}"></script>
+			<script src="{{ asset('assets/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+			<script class="include" type="text/javascript" src="{{ asset('assets/lib/jquery.dcjqaccordion.2.7.js') }}"></script>
+			<script src="{{ asset('assets/lib/jquery.scrollTo.min.js') }}"></script>
+			<script src="{{ asset('assets/lib/common-scripts.js') }}"></script>
+			<script src="{{ asset('assets/lib/sparkline/jquery.sparkline.js') }}"></script>
+			<script src="{{ asset('assets/lib/fullcalendar/fullcalendar.js') }}"></script>
+			<script src="{{ asset('assets/lib/bootstrap-fileupload/bootstrap-fileupload.js') }}"></script>
+			<script src="{{ asset('assets/lib/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+			<script src="{{ asset('assets/lib/bootstrap-timepicker/js/bootstrap-timepicker.js') }}"></script>
+			<script src="{{ asset('assets/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}"></script>
+			<script>
+				$(document).ready(function () { // Initialize datepicker
+$('.datepicker').datepicker({format: 'yyyy-mm-dd', autoclose: true});
+// Initialize timepicker
+$('.timepicker').timepicker({showMeridian: false});
+// Initialize datetimepicker
+$('.datetimepicker').datetimepicker({format: 'yyyy-mm-dd hh:ii', autoclose: true});
+});
+			</script>
+		</body>
+	</html>

@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block central %}
+<!--**********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+<div class="container">
+	<div id="blocImage">
+		<img src="assets/img/greece-1162816_640.jpg" alt="Agora LR" class="responsive">
+		{# <img src="assets/img/greece-3348294_1280.jpg" alt="Agora HR" class="responsive"> #}
+		<div id="blocImageTexte">
+			{% if app.user %}
+				Bonjour {{ app.user.prenomMembre }} {{ app.user.nomMembre }}
+			{% else %}
+				Identifiez vous !
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
